@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero-interior.jpg";
-import latte from "@/assets/menu-latte.jpg";
+import latte from "@/assets/real-croissants-latte.jpg";
 import coldbrew from "@/assets/menu-coldbrew.jpg";
-import pourover from "@/assets/menu-pourover.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import grinder from "@/assets/real-grinder.jpg";
+import cruffins from "@/assets/real-cruffins.jpg";
+import pecanbun from "@/assets/real-pecanbun.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
