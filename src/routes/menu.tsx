@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import latte from "@/assets/menu-latte.jpg";
-import espresso from "@/assets/menu-espresso.jpg";
+import latte from "@/assets/real-croissants-latte.jpg";
+import espresso from "@/assets/real-grinder.jpg";
 import coldbrew from "@/assets/menu-coldbrew.jpg";
 import pourover from "@/assets/menu-pourover.jpg";
-import dessert from "@/assets/menu-dessert.jpg";
+import dessert from "@/assets/real-pecanbun.jpg";
+import painauchocolat from "@/assets/real-painauchocolat.jpg";
+import cruffins from "@/assets/real-cruffins.jpg";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -85,16 +87,35 @@ function Menu() {
     <>
       <header className="pt-40 md:pt-48 pb-20 gutter bg-surface">
         <div className="max-w-[1400px] mx-auto reveal">
-          <span className="label text-primary block mb-6">The Carte</span>
+          <span className="label text-primary block mb-6">Specialty Coffee · Boulangerie</span>
           <h1 className="font-serif text-6xl md:text-[9rem] leading-[0.95] tracking-tighter">
             The <span className="italic font-normal">Menu</span>
           </h1>
           <p className="mt-10 max-w-xl text-on-surface-variant text-lg leading-relaxed">
-            Five quiet chapters. Single-origin beans, milks textured by hand, and pastries
-            baked through the night. Prices in Pakistani Rupees.
+            Five quiet chapters. Single-origin beans, milks textured by hand, and viennoiserie
+            laminated through the night. Prices in Pakistani Rupees.
           </p>
+          <div className="mt-10 inline-flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-b border-on-surface/10 py-5">
+            <span className="label text-on-surface-variant">Dine-In <span className="text-primary ml-2">8 AM — 10 PM</span></span>
+            <span className="label text-on-surface-variant">Take Away <span className="text-primary ml-2">10 PM — 12 AM</span></span>
+          </div>
         </div>
       </header>
+
+      {/* Boulangerie showcase */}
+      <section className="bg-surface-low gutter py-20">
+        <div className="max-w-[1500px] mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <figure className="reveal zoom-img aspect-[4/5] overflow-hidden">
+            <img src={painauchocolat} alt="Pain au chocolat with golden flaky layers" className="w-full h-full object-cover" loading="lazy" />
+          </figure>
+          <figure className="reveal zoom-img aspect-[4/5] overflow-hidden" data-delay="100">
+            <img src={cruffins} alt="Cruffins suspended in air" className="w-full h-full object-cover" loading="lazy" />
+          </figure>
+          <figure className="reveal zoom-img aspect-[4/5] overflow-hidden col-span-2 md:col-span-1" data-delay="200">
+            <img src={dessert} alt="Sticky pecan caramel bun" className="w-full h-full object-cover" loading="lazy" />
+          </figure>
+        </div>
+      </section>
 
       {sections.map((s, idx) => {
         const reverse = idx % 2 === 1;
