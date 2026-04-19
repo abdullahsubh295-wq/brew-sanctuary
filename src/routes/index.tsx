@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import hero from "@/assets/hero-interior.jpg";
-import latte from "@/assets/menu-latte.jpg";
+import latte from "@/assets/real-croissants-latte.jpg";
 import coldbrew from "@/assets/menu-coldbrew.jpg";
-import pourover from "@/assets/menu-pourover.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import grinder from "@/assets/real-grinder.jpg";
+import cruffins from "@/assets/real-cruffins.jpg";
+import pecanbun from "@/assets/real-pecanbun.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -159,16 +159,46 @@ function Home() {
         </div>
       </section>
 
+      {/* Hours + specialty strip */}
+      <section className="bg-surface-low gutter py-24 md:py-32">
+        <div className="max-w-[1500px] mx-auto grid md:grid-cols-12 gap-12 items-center">
+          <div className="md:col-span-5 reveal reveal-left zoom-img aspect-[4/5] overflow-hidden">
+            <img src={grinder} alt="Freshly ground espresso falling into the portafilter" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div className="md:col-span-6 md:col-start-7 reveal reveal-right space-y-8">
+            <span className="label text-primary">Specialty Coffee · Boulangerie</span>
+            <h2 className="font-serif text-4xl md:text-6xl leading-[1.05]">
+              The hours of the <span className="italic">house.</span>
+            </h2>
+            <div className="grid grid-cols-2 gap-8 pt-4 border-t border-on-surface/10">
+              <div className="space-y-2">
+                <div className="label text-on-surface-variant">Dine-In</div>
+                <div className="font-serif text-3xl text-primary">8 AM — 10 PM</div>
+                <p className="text-sm text-on-surface-variant">Every day · full service</p>
+              </div>
+              <div className="space-y-2">
+                <div className="label text-on-surface-variant">Take Away</div>
+                <div className="font-serif text-3xl text-primary">10 PM — 12 AM</div>
+                <p className="text-sm text-on-surface-variant">Late hours · counter only</p>
+              </div>
+            </div>
+            <p className="text-on-surface-variant leading-relaxed">
+              Specialty coffee and a working boulangerie under one roof — viennoiserie laminated through the night, espresso pulled from sunrise.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Visual mood + CTA */}
       <section className="bg-on-surface text-surface gutter py-32">
         <div className="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7 reveal reveal-left">
             <div className="grid grid-cols-2 gap-5">
               <div className="zoom-img aspect-[4/5] overflow-hidden">
-                <img src={gallery1} alt="Marble counter with beans and brass" className="w-full h-full object-cover" loading="lazy" />
+                <img src={cruffins} alt="Cruffins floating against a sage backdrop" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="zoom-img aspect-[4/5] overflow-hidden translate-y-12">
-                <img src={gallery3} alt="Quiet corner with single pendant light" className="w-full h-full object-cover" loading="lazy" />
+                <img src={pecanbun} alt="Sticky pecan caramel bun" className="w-full h-full object-cover" loading="lazy" />
               </div>
             </div>
           </div>
@@ -178,10 +208,10 @@ function Home() {
               Step into the <span className="italic">stillness.</span>
             </h2>
             <p className="text-surface/75 leading-relaxed">
-              Find us in F-7 Markaz, Islamabad. Open every day from morning light to late evening — for the espresso break, the long read, the slow conversation.
+              Find us at Shaheen Market, E-7 Islamabad. Open every day from morning light to midnight — for the espresso break, the long read, the slow conversation.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://maps.google.com/?q=Brew+Islamabad" target="_blank" rel="noreferrer" className="btn-primary">Get Directions</a>
+              <a href="https://maps.google.com/?q=Brew+E-7+Islamabad" target="_blank" rel="noreferrer" className="btn-primary">Get Directions</a>
               <Link to="/gallery" className="btn-ghost text-surface">See the Space</Link>
             </div>
           </div>
@@ -191,10 +221,9 @@ function Home() {
       <section className="bg-surface gutter py-32">
         <div className="max-w-[1400px] mx-auto reveal">
           <p className="font-serif italic text-3xl md:text-5xl leading-[1.25] text-on-surface">
-            "Walking into Brew feels like stepping out of Islamabad and into a quiet European
-            atelier. The flat white was the best I've had in the city — easily."
+            "Brew in E-7 Shaheen Market is a refreshing addition to Islamabad's breakfast and coffee scene — a wonderful place to start your day."
           </p>
-          <p className="label text-primary mt-10">— Hira A. · Google Reviews</p>
+          <p className="label text-primary mt-10">— Mir Shai Mazar Baloch · Google Local Guide</p>
         </div>
       </section>
     </>
