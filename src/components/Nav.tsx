@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo from "@/assets/brew-logo.png";
 
 const links = [
@@ -11,12 +11,37 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
   const loc = useLocation();
 
   useEffect(() => { setOpen(false); }, [loc.pathname]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastY.current;
+      // Always show near the top
+      if (y < 80) {
+        setHidden(false);
+      } else if (delta > 6) {
+        // scrolling down
+        setHidden(true);
+        setOpen(false);
+      } else if (delta < -6) {
+        // scrolling up
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 glass">
+    <nav
+      className={`fixed top-0 inset-x-0 z-50 glass transition-transform duration-500 ease-out ${hidden ? "-translate-y-full" : "translate-y-0"}`}
+    >
       <div className="max-w-[1800px] mx-auto flex items-center justify-between gutter py-5 md:py-6">
         <Link to="/" className="flex items-center gap-3 group">
           <span className="w-10 h-10 rounded-full bg-on-surface flex items-center justify-center overflow-hidden">
