@@ -23,9 +23,12 @@ export function Footer() {
           </p>
           <p className="label text-primary-container mt-8 mb-4">Hours</p>
           <p className="text-surface/80 leading-relaxed">
-            Mon — Sun<br />
-            08:00 — 23:00
+            <span className="text-primary-container">Dine-In</span><br />
+            8 AM — 10 PM<br />
+            <span className="text-primary-container mt-2 inline-block">Take Away</span><br />
+            10 PM — 12 AM
           </p>
+          <p className="text-surface/50 text-sm mt-3">Every day · Specialty Coffee &amp; Boulangerie</p>
         </div>
 
         <div className="md:col-span-4 reveal reveal-right" data-delay="200">

@@ -22,7 +22,7 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <header className="relative h-[100svh] w-full flex items-end overflow-hidden">
+      <header className="relative h-[100svh] w-full flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={hero}
@@ -34,9 +34,8 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/30 to-on-surface/40" />
         </div>
 
-        <div className="relative z-10 w-full gutter pb-20 md:pb-28 max-w-[1800px] mx-auto">
+        <div className="relative z-10 w-full gutter pt-32 md:pt-40 pb-16 md:pb-24 max-w-[1800px] mx-auto">
           <div className="max-w-3xl text-surface space-y-8">
-            <span className="label text-primary-container reveal">Specialty Coffee · Islamabad</span>
             <h1 className="reveal font-serif text-[clamp(3.2rem,8.5vw,8.5rem)] leading-[0.95] tracking-tighter font-bold">
               Slow <br />
               <span className="italic font-normal">brewed.</span>
