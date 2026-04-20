@@ -95,7 +95,7 @@ export function CursorAndReveal() {
           if (node.nodeType !== 1) return;
           const el = node as HTMLElement;
           if (el.classList?.contains("reveal")) io.observe(el);
-          if (el.querySelectorAll) observe(el);
+          if (typeof el.querySelectorAll === "function") observe(el);
         });
       }
     });
