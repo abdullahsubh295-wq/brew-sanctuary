@@ -53,7 +53,7 @@ function Home() {
         </div>
 
         <div className="absolute bottom-8 right-8 z-10 hidden md:block text-surface/60 label">
-          ↓ Scroll
+          &#8203;
         </div>
       </header>
 
