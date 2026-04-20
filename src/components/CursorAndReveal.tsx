@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 /**
  * Mounts the custom dot cursor (desktop only) and a global IntersectionObserver
  * that toggles `.is-visible` on any element with `.reveal`.
+ * Uses a MutationObserver so newly-mounted elements (route changes) are also tracked.
  */
 export function CursorAndReveal() {
   const dotRef = useRef<HTMLDivElement | null>(null);
@@ -55,13 +56,15 @@ export function CursorAndReveal() {
     };
   }, []);
 
-  // Scroll reveal observer
+  // Scroll reveal observer — reused across route changes via MutationObserver
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
     if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-visible"));
+      document.querySelectorAll<HTMLElement>(".reveal").forEach((el) =>
+        el.classList.add("is-visible"),
+      );
       return;
     }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -73,11 +76,45 @@ export function CursorAndReveal() {
           }
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
     );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  });
+
+    const observe = (root: ParentNode) => {
+      root.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)").forEach((el) => {
+        io.observe(el);
+      });
+    };
+
+    // Initial pass
+    observe(document.body);
+
+    // Watch for new .reveal elements added by route changes / dynamic content
+    const mo = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        m.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          const el = node as HTMLElement;
+          if (el.classList?.contains("reveal")) io.observe(el);
+          if (el.querySelectorAll) observe(el);
+        });
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    // Safety net: ensure anything still hidden after 1.2s becomes visible
+    const failSafe = window.setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add("is-visible");
+      });
+    }, 1200);
+
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+      window.clearTimeout(failSafe);
+    };
+  }, []);
 
   return null;
 }
