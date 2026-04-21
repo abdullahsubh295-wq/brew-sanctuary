@@ -77,6 +77,19 @@ function Home() {
             </p>
           </div>
         </div>
+
+        {/* Philosophy image triptych */}
+        <div className="max-w-[1400px] mx-auto mt-20 md:mt-28 grid grid-cols-3 gap-3 md:gap-6">
+          <div className="reveal zoom-img aspect-[3/4] overflow-hidden">
+            <img src={grinder} alt="Espresso grind" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div className="reveal zoom-img aspect-[3/4] overflow-hidden translate-y-6 md:translate-y-12" data-delay="120">
+            <img src={latte} alt="Latte art rosetta" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div className="reveal zoom-img aspect-[3/4] overflow-hidden" data-delay="240">
+            <img src={pecanbun} alt="Pecan caramel bun" className="w-full h-full object-cover" loading="lazy" />
+          </div>
+        </div>
       </section>
 
       {/* Asymmetric bento — Signature Brews */}
@@ -142,16 +155,16 @@ function Home() {
           <h2 className="reveal font-serif text-5xl md:text-7xl leading-[1.05] mb-20">
             Experience <br /><span className="italic">the serenity</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-left">
             {[
               { t: "Intentional Space", d: "An interior of limestone, walnut and warm light — designed to slow your breath." },
               { t: "Atmospheric Sound", d: "Aural landscapes curated for the time of day, from morning mist to evening dusk." },
               { t: "The Bean Ritual", d: "Our baristas treat every extraction as a singular, repeatable masterpiece." },
             ].map((p, i) => (
-              <div key={p.t} className="reveal space-y-5" data-delay={i * 150}>
-                <div className="font-serif text-5xl text-primary">0{i + 1}</div>
-                <h4 className="font-serif text-2xl">{p.t}</h4>
-                <p className="text-on-surface-variant leading-relaxed">{p.d}</p>
+              <div key={p.t} className="reveal pillar-card space-y-5" data-delay={i * 150}>
+                <div className="font-serif text-5xl pillar-num">0{i + 1}</div>
+                <h4 className="font-serif text-2xl pillar-title">{p.t}</h4>
+                <p className="pillar-text text-on-surface-variant leading-relaxed">{p.d}</p>
               </div>
             ))}
           </div>
