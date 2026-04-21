@@ -238,6 +238,49 @@ function Home() {
           <p className="label text-primary mt-10">— Mir Shai Mazar Baloch · Google Local Guide</p>
         </div>
       </section>
+
+      {/* Live location map */}
+      <section id="location" className="bg-surface-low gutter py-24 md:py-32 scroll-mt-24">
+        <div className="max-w-[1500px] mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div className="reveal">
+              <span className="label text-primary mb-4 block">Find Us</span>
+              <h2 className="font-serif text-5xl md:text-6xl leading-[1.05]">
+                Shaheen Market, <span className="italic">E-7.</span>
+              </h2>
+            </div>
+            <a
+              href="https://www.google.com/maps/place/Brew/@33.7272512,73.0429065,17z/data=!4m7!3m6!1s0x38dfbf7d4356f4a7:0xb241786c707fd4a2!8m2!3d33.7272513!4d73.0477774"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary reveal"
+              data-delay="120"
+            >
+              Open in Google Maps
+            </a>
+          </div>
+          <a
+            href="https://www.google.com/maps/place/Brew/@33.7272512,73.0429065,17z/data=!4m7!3m6!1s0x38dfbf7d4356f4a7:0xb241786c707fd4a2!8m2!3d33.7272513!4d73.0477774"
+            target="_blank"
+            rel="noreferrer"
+            className="reveal block relative aspect-[16/9] md:aspect-[21/9] overflow-hidden lift group"
+            aria-label="Open Brew location on Google Maps"
+          >
+            <iframe
+              title="Brew Coffee — E-7 Shaheen Market, Islamabad"
+              src="https://www.google.com/maps?q=Brew+E-7+Shaheen+Market+Islamabad&z=16&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-on-surface/0 group-hover:bg-on-surface/15 transition-colors duration-500" />
+            <div className="absolute bottom-6 left-6 bg-surface/95 backdrop-blur px-5 py-3 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              Click to open in Google Maps
+            </div>
+          </a>
+        </div>
+      </section>
     </>
   );
 }
