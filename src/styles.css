@@ -150,6 +150,8 @@
 .cursor-dot.is-hover {
   width: 56px; height: 56px;
   background: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.25;
 }
 .cursor-dot.is-hidden { opacity: 0; }
 
