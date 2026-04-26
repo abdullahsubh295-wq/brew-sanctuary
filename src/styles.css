@@ -305,3 +305,6 @@
 
 /* Section gutters */
 .gutter { padding-left: clamp(1.25rem, 5vw, 4rem); padding-right: clamp(1.25rem, 5vw, 4rem); }
+
+/* Hide Lovable badge globally */
+#lovable-badge { display: none !important; }
