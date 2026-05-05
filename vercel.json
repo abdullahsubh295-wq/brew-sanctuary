@@ -1,8 +1,24 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "framework": null,
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "edge"
+    }
+  },
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/server/index.js"
+    }
   ]
 }
