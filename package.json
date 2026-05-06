@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && node scripts/postbuild-cloudflare.mjs",
+    "build": "vite build && node scripts/postbuild-node.mjs",
+    "build:cloudflare": "vite build && node scripts/postbuild-cloudflare.mjs",
+    "start": "node server.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
